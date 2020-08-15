@@ -1,0 +1,9 @@
+<div id=app></div>
+<% if Rails.env.development? && ENV['USE_WEBPACK_ASSETS'].to_i.positive? %>
+  <script type="text/javascript" src="http://<%= ENV['WEBPACK_ASSETS_HOST'] %>:9090/static/js/manifest.js"> </script>
+  <script type="text/javascript" src="http://<%= ENV['WEBPACK_ASSETS_HOST'] %>:9090/static/js/vendor.js"> </script>
+  <script type="text/javascript" src="http://<%= ENV['WEBPACK_ASSETS_HOST'] %>:9090/static/js/app.js"> </script>
+  <script async type="text/javascript" id="mini-profiler" src="/mini-profiler-resources/includes.js?v=12b4b45a3c42e6e15503d7a03810ff33" data-version="12b4b45a3c42e6e15503d7a03810ff33" data-path="/mini-profiler-resources/" data-current-id="redo66j4g1077kto8uh3" data-ids="redo66j4g1077kto8uh3" data-horizontal-position="left" data-vertical-position="top" data-trivial="false" data-children="false" data-max-traces="10" data-controls="false" data-authorized="true" data-toggle-shortcut="Alt+P" data-start-hidden="false" data-collapse-results="true"></script>
+<% else %>
+  <%= javascript_include_tag 'application' %>
+<% end %>

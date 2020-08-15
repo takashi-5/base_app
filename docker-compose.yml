@@ -22,15 +22,18 @@ services:
       - .:/var/src/app
       - bundle:/usr/local/bundle
     ports:
-      - '80:3000'
+      - '3000:3000'
     environment:
       RAILS_ENV: development
       PG_DATABASE: base_app
       PG_PASSWORD: pass
       PG_USER: postgres
+      USE_WEBPACK_ASSETS: 1
+      WEBPACK_ASSETS_HOST: localhost
       SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
     links:
       - db
+    depends_on:
       - node
     working_dir: /var/src/app
     command: /bin/sh -c "rm -f /var/src/app/tmp/pids/server.pid;bundle exec rails s -b 0.0.0.0"
@@ -54,5 +57,5 @@ services:
       - /var/src/app/frontend/node_modules
     ports:
       - 9090:8080
-    command: ./node_modules/.bin/webpack-dev-server --host 0.0.0.0 --inline --progress --config build/webpack.dev.conf.js
+    command: ./node_modules/.bin/webpack-dev-server --host 0.0.0.0 --inline --progress --config build/webpack.prod.conf.js
     container_name: base_node
