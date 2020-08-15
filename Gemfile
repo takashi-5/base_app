@@ -8,6 +8,7 @@ gem 'bootstrap'
 
 gem 'kaminari'
 gem 'seed-fu'
+gem 'rails-i18n', '~> 5.1'
 
 gem 'bootstrap-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -53,6 +54,7 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'annotate'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -61,6 +63,7 @@ group :development do
 end
 
 group :test do
+  gem 'database_rewinder'
   gem 'capybara'
   gem 'rspec-parameterized'
   gem 'rspec_junit_formatter'
